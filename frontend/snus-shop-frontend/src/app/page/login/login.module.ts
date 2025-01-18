@@ -4,18 +4,18 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { ShoppingCartPageRoutingModule } from './shopping-cart-routing.module';
+import { LoginPageRoutingModule } from './login-routing.module';
 
-import { ShoppingCartPage } from './shopping-cart.page';
+import { LoginPage } from './login.page';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule.forRoot(),
-    ShoppingCartPageRoutingModule,
-    ShoppingCartPage,
+    LoginPageRoutingModule,
+    LoginPage
   ],
   declarations: []
 })
-export class ShoppingCartPageModule {}
+export class LoginPageModule {}
