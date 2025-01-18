@@ -1,0 +1,7 @@
+spring:
+  config:
+    import: optional:configserver:http://localhost:8788/
+    profiles:
+      active: native
+  application:
+    name: auth-service
