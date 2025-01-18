@@ -1,0 +1,7 @@
+{
+  "name": "snus-shop-frontend",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
