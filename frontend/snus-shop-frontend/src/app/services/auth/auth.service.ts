@@ -10,7 +10,7 @@ import {Observable} from 'rxjs';
 })
 export class AuthService {
 
-  authURL: string = 'http://localhost:8222/snus-shop'
+  authURL: string = 'http://localhost:8222/snus-shop/auth'
 
   constructor(
     private http: HttpClient
