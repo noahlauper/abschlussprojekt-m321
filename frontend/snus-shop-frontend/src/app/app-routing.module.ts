@@ -1,19 +1,22 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import {AuthGuard} from './guard/auth.guard';
 
 const routes: Routes = [
   {
     path: 'home',
-    loadChildren: () => import('./page/home/home.module').then( m => m.HomePageModule)
+    loadChildren: () => import('./page/home/home.module').then( m => m.HomePageModule),
+    canActivate: [AuthGuard],
   },
   {
-    path: '',
+    path: 'register',
     redirectTo: 'home',
-    pathMatch: 'full'
+    pathMatch: 'full',
   },
   {
     path: 'shopping-cart',
-    loadChildren: () => import('./page/shopping-cart/shopping-cart.module').then( m => m.ShoppingCartPageModule)
+    loadChildren: () => import('./page/shopping-cart/shopping-cart.module').then( m => m.ShoppingCartPageModule),
+    canActivate: [AuthGuard],
   },
   {
     path: 'login',

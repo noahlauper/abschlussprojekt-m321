@@ -1,5 +1,10 @@
 <app-header></app-header>
 
 <ion-content [fullscreen]="true">
-
+  <ion-title>Produkte</ion-title>
+  <div class="product-container">
+    @for (product of products; track $index) {
+      <app-product-card [product]="product" [isInCart]="false"></app-product-card>
+    }
+  </div>
 </ion-content>

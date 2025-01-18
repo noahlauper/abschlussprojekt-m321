@@ -25,7 +25,7 @@ export class AuthGuard implements CanActivate {
     if (token !== null) {
       try {
         const result = await this.http
-          .get<TokenValidation>('http://localhost:8222/license-catalogue/auth/is-token-valid')
+          .get<TokenValidation>('http://localhost:8222/snus-shop/auth/is-token-valid')
           .toPromise()
           .catch(function (err) {
             console.log(err)
