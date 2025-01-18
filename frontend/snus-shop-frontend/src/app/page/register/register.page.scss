@@ -1,0 +1,87 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+ion-input {
+  width: 20vw;
+  margin-bottom: 20px;
+  height: 20px;
+  margin-left: 10px;
+}
+
+.login-button {
+  background-color: transparent;
+  border-bottom: 2px solid blue;
+}
+
+.login-redirection-text {
+  margin-left: 100px;
+}
+
+#lastName-error-text {
+  margin-top: -15px;
+  margin-bottom: 20px;
+}
+
+#password-error-text {
+  margin-top: -15px;
+  margin-bottom: 20px;
+}
+
+#address-error-text {
+  margin-top: -15px;
+  margin-bottom: 20px;
+}
+
+.header-container {
+  display: flex;
+  justify-content:  center;
+  align-items: center;
+  height: 25%;
+  width: 100%;
+}
+
+.form-container {
+  width: 100%;
+  display: flex;
+  max-height: 450px;
+  margin-top: 30px;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+}
+
+ion-button {
+  width: 20vw;
+  margin: 10px;
+}
+
+.label-text {
+  margin-top: -15px;
+  margin-bottom: 20px;
+}
+
+.authentication-container {
+  width: 30vw;
+  height: 60vh;
+  background-color: #1e1e1e;
+  display: flex;
+  flex-direction: column;
+  border-radius: 20px;
+}
+
+.title-container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 10%;
+  margin-bottom: 20px;
+}
+
+.firstName-input {
+  margin-top: -50px;
+}

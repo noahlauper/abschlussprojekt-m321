@@ -1,13 +1,54 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>register</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">register</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <div class="container">
+    <div class="authentication-container">
+      <div class="small-screen-container">
+        <div class="title-container">
+          <h2>Registrieren</h2>
+        </div>
+        <div class="form-container">
+          <form action="" [formGroup]="registerForm">
+            <ion-input formControlName="firstName" label="Vorname" label-placement="floating" fill="outline"
+                       id="firstName-input"
+                       placeholder="Text eingeben"></ion-input>
+            <ion-label slot="error"
+                       *ngIf="(control('firstName')?.dirty || control('firstName')?.touched) && control('firstName')?.errors">
+              <p class="label-text">2-30 Zeichen, Keine Zahlen</p>
+            </ion-label>
+            <ion-input formControlName="lastName" label="Nachname" label-placement="floating" fill="outline"
+                       placeholder="Text eingeben"></ion-input>
+            <ion-label slot="error"
+                       *ngIf="(control('lastName')?.dirty || control('lastName')?.touched) && control('lastName')?.errors"
+                       class="error">
+              <p id="lastName-error-text">2-30 Zeichen, Keine Zahlen</p>
+            </ion-label>
+            <ion-input formControlName="email" label="Email" type="email"
+                       label-placement="floating" fill="outline" placeholder="Email eingebem"></ion-input>
+            <ion-label slot="error"
+                       *ngIf="(control('email')?.dirty || control('email')?.touched) && control('email')?.errors"
+                       class="error">
+              <p class="label-text">Kein Korrektes Email Format</p>
+            </ion-label>
+            <ion-input formControlName="address" label="Adresse" label-placement="floating" fill="outline"
+                       placeholder="Text eingeben"></ion-input>
+            <ion-label slot="error"
+                       *ngIf="(control('lastName')?.dirty || control('lastName')?.touched) && control('lastName')?.errors"
+                       class="error">
+              <p id="address-error-text">2-30 Zeichen, Keine Zahlen</p>
+            </ion-label>
+            <ion-input formControlName="password" label="Passwort" type="password" label-placement="floating"
+                       fill="outline" placeholder="Text eingeben"></ion-input>
+            <ion-label slot="error"
+                       *ngIf="(control('password')?.dirty || control('password')?.touched) && control('password')?.errors"
+                       class="error">
+              <p id="password-error-text">8-64 Zeichen</p>
+            </ion-label>
+            <ion-button (click)="registerUser()">Registrieren</ion-button>
+            <p class="login-redirection-text">Bereits ein konto
+              <button (click)="redirectToLogin()" class="login-button">login</button>
+            </p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
 </ion-content>
