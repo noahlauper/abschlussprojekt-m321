@@ -1,0 +1,42 @@
+eureka:
+  client:
+    register-with-eureka: false
+server:
+  port: 8222
+spring:
+  application:
+    name: api-gateway
+  config:
+    import: optional:configserver:http//localhost:8788
+    profiles:
+      active: native
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+      routes:
+        - id: product-service
+          uri: http://localhost:8071
+          predicates:
+            - Path=/snus-shop/products/**
+        - id: shoppingBasket-service
+          uri: http://localhost:8075
+          predicates:
+            - Path=/snus-shop/shoppingCart/**
+        - id: auth-service
+          uri: http://localhost:8077
+          predicates:
+            - Path=/snus-shop/auth/**
+management:
+  tracing:
+    sampling:
+      probability: 1.0
+  endpoints:
+    web:
+      exposure:
+        include: [ "prometheus" ]
+springfox:
+  documentation:
+    swagger-ui:
+      enabled: true
