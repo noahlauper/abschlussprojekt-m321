@@ -1,0 +1,37 @@
+eureka:
+  instance:
+    hostname: discovery-server
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+server:
+  port: 8075
+spring:
+  application:
+    name: shopping-cart-service
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/snus_shop
+    username: admin
+    password: test123
+  jpa:
+    hibernate:
+      ddl-auto: update
+application:
+  config:
+    shopping-cart-url: http://localhost:8222/snus-shop/cart
+management:
+  tracing:
+    sampling:
+      probability: 1.0
+  endpoints:
+    web:
+      exposure:
+        include: [ "prometheus" ]
+logging:
+  level:
+    root: INFO
+springfox:
+  documentation:
+    swagger-ui:
+      enabled: true
