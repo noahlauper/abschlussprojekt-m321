@@ -68,7 +68,7 @@ export class ShoppingCartPage implements OnInit {
     })
   }
 
-  setPaymentMethod(paymentMethod: string) {
-    this.paymentMethod = paymentMethod;
+  setPaymentMethod(event: CustomEvent) {
+    this.paymentMethod = event.detail.value;
   }
 }
