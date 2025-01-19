@@ -16,7 +16,7 @@ spring:
     password: test123
   jpa:
     hibernate:
-      ddl-auto: update
+      ddl-auto: create-drop
 application:
   config:
     license-url: http://localhost:8222/snus-shop/products

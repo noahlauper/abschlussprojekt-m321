@@ -5,10 +5,10 @@ eureka:
     service-url:
       defaultZone: http://localhost:8761/eureka
 server:
-  port: 8075
+  port: 8074
 spring:
   application:
-    name: shopping-cart-service
+    name: license-service
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/snus_shop
@@ -19,7 +19,7 @@ spring:
       ddl-auto: create-drop
 application:
   config:
-    shopping-cart-url: http://localhost:8222/snus-shop/cart
+    license-url: http://localhost:8222/snus-shop/oders
 management:
   tracing:
     sampling:

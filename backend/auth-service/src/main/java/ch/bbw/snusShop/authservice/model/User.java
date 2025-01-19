@@ -44,6 +44,9 @@ public class User implements UserDetails {
   @ElementCollection
   private List<Long> productIdsInCart;
 
+  @ElementCollection
+  private List<Long> oderIds;
+
   @Override
   public Collection<? extends GrantedAuthority> getAuthorities() {
     return null;
@@ -86,5 +89,6 @@ public class User implements UserDetails {
     this.pw = pw;
     this.shoppingCartList = new ArrayList<>();
     this.productIdsInCart = new ArrayList<>();
+    this.oderIds = new ArrayList<>();
   }
 }

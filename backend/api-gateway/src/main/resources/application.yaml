@@ -23,9 +23,13 @@ spring:
         - id: shoppingBasket-service
           uri: http://localhost:8075
           predicates:
-            - Path=/snus-shop/shoppingCart/**
+            - Path=/snus-shop/cart/**
         - id: auth-service
           uri: http://localhost:8077
+          predicates:
+            - Path=/snus-shop/auth/**
+        - id: oders-service
+          uri: http://localhost:8074
           predicates:
             - Path=/snus-shop/auth/**
 management:

@@ -1,5 +1,6 @@
 package ch.bbw.snusShop.productservice.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import jakarta.persistence.ElementCollection;
@@ -28,8 +29,12 @@ public class User {
   private String pw;
 
   @ElementCollection
-  private List<Long> shoppingCartList;
-
+  private List<Long> shoppingCartList;  
+  
+  @ElementCollection
+  private List<Long> orderIds;
+  
+  
 
 
   public User(String firstName, String lastName, String email, String pw) {
@@ -37,5 +42,7 @@ public class User {
     this.lastName = lastName;
     this.email = email;
     this.pw = pw;
+    this.shoppingCartList = new ArrayList<>();
+    this.orderIds = new ArrayList<>();
   }
 }

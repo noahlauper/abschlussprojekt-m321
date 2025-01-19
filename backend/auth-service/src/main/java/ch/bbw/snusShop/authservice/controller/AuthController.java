@@ -21,7 +21,7 @@ import ch.bbw.snusShop.authservice.service.AuthService;
 import lombok.RequiredArgsConstructor;
 
 @RestController
-@RequestMapping("/license-catalogue/auth")
+@RequestMapping("/snus-shop/auth")
 @RequiredArgsConstructor
 public class AuthController {
 
