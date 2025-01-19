@@ -30,7 +30,7 @@
         <ion-input formControlName="address" label="Adresse" type="text" label-placement="floating" fill="outline"></ion-input>
 
 
-        <ion-select label="Zahlungsmethode" label-placement="floating" fill="outline" value="Twint">
+        <ion-select label="Zahlungsmethode" label-placement="floating" fill="outline" value="Twint" (ionChange)="setPaymentMethod($event)">
           <ion-select-option value="PayPal">PayPal</ion-select-option>
           <ion-select-option value="Kreditkarte">Kreditkarte</ion-select-option>
           <ion-select-option value="Twint">Twint</ion-select-option>
@@ -38,7 +38,7 @@
         </ion-select>
 
         <div class="button-container">
-          <ion-button class="order-button">bestellen</ion-button>
+          <ion-button class="order-button" (click)="createOrder()">bestellen</ion-button>
         </div>
       </div>
     </div>
