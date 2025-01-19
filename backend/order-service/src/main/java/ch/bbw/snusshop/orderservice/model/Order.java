@@ -24,4 +24,10 @@ public class Order {
   String paymentMethod;
   @ElementCollection
   List<Long> productIds;
+
+
+  public Order(String paymentMethod, List<Long> productIds) {
+    this.paymentMethod = paymentMethod;
+    this.productIds = productIds;
+  }
 }
