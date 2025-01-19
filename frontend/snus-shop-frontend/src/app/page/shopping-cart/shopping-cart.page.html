@@ -2,9 +2,46 @@
 
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">shopping-cart</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  @if (!finishOrder) {
+    <div class="header-container">
+      <ion-title>Produkte</ion-title>
+      <div class="right-container">
+        <ion-text class="sum-text">Summe: {{sum}} CHF</ion-text>
+        <ion-button (click)="wantsToFinishOrder()">Bestellung abschliessen</ion-button>
+      </div>
+    </div>
+    <div class="product-container">
+      @for (product of products; track $index) {
+        <app-product-card [product]="product" [isInCart]="true"></app-product-card>
+      }
+    </div>
+  } @else {
+    <ion-title>Bestellung abschliessen</ion-title>
+    <div class="checkout-container">
+      <div class="checkout-info-container">
+        <div class="checkout-product-container">
+          <h1>Bestelldetails</h1>
+          @for (product of products; track product.id) {
+            <ion-text class="product-text">{{ product.price }} |  {{product.price}}</ion-text>
+          }
+          <ion-text class="total-text">Total: {{sum}}</ion-text>
+        </div>
+
+        <ion-input formControlName="address" label="Adresse" type="text" label-placement="floating" fill="outline"></ion-input>
+
+
+        <ion-select label="Zahlungsmethode" label-placement="floating" fill="outline" value="Twint">
+          <ion-select-option value="PayPal">PayPal</ion-select-option>
+          <ion-select-option value="Kreditkarte">Kreditkarte</ion-select-option>
+          <ion-select-option value="Twint">Twint</ion-select-option>
+          <ion-select-option value="Bitcoin">Bitcoin</ion-select-option>
+        </ion-select>
+
+        <div class="button-container">
+          <ion-button class="order-button">bestellen</ion-button>
+        </div>
+      </div>
+    </div>
+  }
+
 </ion-content>

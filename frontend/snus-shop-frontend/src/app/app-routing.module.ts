@@ -6,7 +6,6 @@ const routes: Routes = [
   {
     path: 'home',
     loadChildren: () => import('./page/home/home.module').then( m => m.HomePageModule),
-    canActivate: [AuthGuard],
   },
   {
     path: 'register',
@@ -16,7 +15,6 @@ const routes: Routes = [
   {
     path: 'shopping-cart',
     loadChildren: () => import('./page/shopping-cart/shopping-cart.module').then( m => m.ShoppingCartPageModule),
-    canActivate: [AuthGuard],
   },
   {
     path: 'login',

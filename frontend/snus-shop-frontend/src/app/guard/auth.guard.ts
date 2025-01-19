@@ -34,15 +34,15 @@ export class AuthGuard implements CanActivate {
           if (result.tokenValid) {
             return true;
           } else {
-            return this.router.createUrlTree(['/login']);
+            return this.router.createUrlTree(['/register']);
           }
         }
       } catch (error) {
         console.log("there was an error in the request: ,", error)
-        return this.router.createUrlTree(['/login']);
+        return this.router.createUrlTree(['/register']);
       }
     }
     console.log("token is undefined")
-    return this.router.createUrlTree(['/login']);
+    return this.router.createUrlTree(['/register']);
   }
 }
