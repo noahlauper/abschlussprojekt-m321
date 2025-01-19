@@ -1,90 +1,78 @@
-# Projektname - Backend und Frontend Setup
+# Getting Started
 
-Dieses Repository enthält die Konfiguration und die notwendigen Schritte, um das Backend und Frontend für das Projekt mit Docker und Docker Compose zu starten.
+Dieses Dokument beschreibt die notwendigen Schritte, um das E-Commerce Microservices Projekt lokal zu starten.
 
 ## Voraussetzungen
 
-Stelle sicher, dass Docker und Docker Compose auf deinem System installiert sind. Wenn sie noch nicht installiert sind, kannst du sie hier herunterladen:
+- Docker & Docker Compose
+- Java 17
+- Node.js & npm
+- Angular CLI
 
-- [Docker installieren](https://docs.docker.com/get-docker/)
-- [Docker Compose installieren](https://docs.docker.com/compose/install/)
+## Backend starten
 
-## Backend und Frontend Setup
+### 1. Datenbank starten
 
-Um das Backend und Frontend mit Docker Compose zu starten, folge diesen Schritten:
-
-### 1. Repository klonen
-
-Klonen Sie das Repository auf deinem lokalen System:
+Im Root-Verzeichnis des Backends befindet sich ein Docker Compose File. Führen Sie folgenden Befehl aus:
 
 ```bash
-git clone https://github.com/dein-repository.git
-cd dein-repository
-```
-### 2. Docker Compose starten
-Führe den folgenden Befehl aus, um die grundlegenden Docker-Container (Services) hochzufahren:
-
-```bash
-Kopieren
 docker-compose up -d
-cd dein-repository
 ```
-Dieser Befehl startet alle Services im Hintergrund. Der -d-Flag sorgt dafür, dass die Container im "Detached Mode" laufen (d.h., sie laufen im Hintergrund).
 
-Services starten
-Die Services sollten in einer bestimmten Reihenfolge gestartet werden. Hier ist die empfohlene Reihenfolge:
+## 2. Microservices starten
 
-1. Config Server starten
-Der Config Server wird benötigt, um die Konfiguration der verschiedenen Services zentral zu verwalten. Starte diesen Service zuerst:
-
+### 1. Config Server
 ```bash
-docker-compose up config-server
+cd config-server
+./gradlew bootRun
 ```
-### 2. Discovery Service starten
-Der Discovery Service ist erforderlich, damit die verschiedenen Microservices miteinander kommunizieren können. Starte diesen Service nach dem Config Server:
 
+### 2. Discovery Server (Eureka)
 ```bash
-docker-compose up discovery-service
+cd discovery-service
+./gradlew bootRun
 ```
-### 3. Weitere Backend Services starten
-Nachdem der Config Server und der Discovery Service laufen, kannst du die restlichen Backend-Services starten. Du kannst auch einzelne Services je nach Bedarf starten:
 
+### 3. Restliche Services (können parallel gestartet werden)
 ```bash
-docker-compose up api
-docker-compose up db
-docker-compose up cache
-```
-Falls du alle Backend-Services auf einmal starten möchtest, kannst du den folgenden Befehl verwenden:
+cd api-gateway
+./gradlew bootRun
 
+cd auth-service
+./gradlew bootRun
+
+cd product-service
+./gradlew bootRun
+
+cd cart-service
+./gradlew bootRun
+
+cd order-service
+./gradlew bootRun
+```
+
+## Frontend starten
+### 1. Dependencies installieren
+Im Frontend-Verzeichnis:
 ```bash
-
-docker-compose up backend
+cd frontend
+npm install
 ```
-### 4. Frontend (Angular) starten
-Das Frontend wurde mit Angular umgesetzt und benötigt einen Web-Server. Starte diesen Service, um das Frontend verfügbar zu machen:
-
+### 2. Development Server starten
 ```bash
-docker-compose up frontend
+ng serve
 ```
-Sobald der Service hochgefahren ist, kannst du die Anwendung im Browser unter http://localhost:4200 aufrufen.
+Die Anwendung ist nun unter http://localhost:4200 erreichbar.
 
-### Services
-Die folgenden Services sind Teil des Projekts und können individuell oder zusammen gestartet werden:
+## Hinweise
 
-config-server: Der Config Server, der die zentrale Verwaltung der Konfigurationen übernimmt.
-discovery-service: Der Service zur Verwaltung der Registrierung und Kommunikation zwischen Microservices.
-api: Der API-Server, der die Geschäftslogik verarbeitet.
-db: Die Datenbank, die das Backend benötigt.
-cache: Der Caching-Service für schnelleren Datenzugriff.
-frontend: Das Angular-basierte Frontend, das die Benutzeroberfläche bereitstellt.
-Container stoppen
-Um die Container zu stoppen, ohne sie zu entfernen, benutze:
+- Stellen Sie sicher, dass alle erforderlichen Ports verfügbar sind
+- Die Datenbank läuft auf Port 3306
+- Der Discovery Service (Eureka) ist unter `http://localhost:8761` erreichbar
+- Das API Gateway läuft auf Port 8080
 
-```bash
-docker-compose stop
-```
-Falls du die Container vollständig stoppen und entfernen möchtest, inklusive Netzwerke und Volumes, kannst du folgendes ausführen:
+## Troubleshooting
 
-```bash
-docker-compose down
-```
+- Falls Verbindungsprobleme auftreten, überprüfen Sie ob alle Services erfolgreich gestartet wurden
+- Der Eureka Server sollte die registrierten Services unter `http://localhost:8761` anzeigen
+- Überprüfen Sie die Service-Logs für detaillierte Fehlermeldungen
